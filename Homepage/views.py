@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login,authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CustomUserCreationFrom
+from .forms import CustomUserCreationFrom, HeaderForm
+from .models import Headers
 
 # Create your views here.
 def HomepageCall(request):
@@ -50,7 +51,27 @@ def RegisterUser(request):
         if form.is_valid():
             user = form.save()
             login(request,user)
-            return redirect('homepage')
+            return redirect('header')
         else:
             print('There is a problem registering user. Please try again')
     return render(request,'Homepage/login.html',{'page':page, 'form':form})
+
+def HeaderPage(request):
+    current_user = request.user
+    # print('current email')
+    instance_email = current_user.email
+    # print(instance_email)
+    # print('all emails')
+    # all_header_items = Headers.objects.all()
+    # for header in all_header_items:
+    #     print(header.email)
+    header_item = Headers.objects.get(email=instance_email)
+    form = HeaderForm(instance=header_item)
+    if request.method == 'POST':
+        form = HeaderForm(request.POST, instance=header_item)
+        if form.is_valid():
+            form.save()
+            return redirect('homepage')
+    return render(request,'Homepage/headerPage.html',{'form':form})
+
+
