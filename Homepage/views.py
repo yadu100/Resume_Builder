@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login,authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CustomUserCreationFrom, HeaderForm
-from .models import Headers
+from .forms import CustomUserCreationFrom, HeaderForm, ProfessionalExperienceForm,EducationForm,LanguagesForm,SkillsForm,HobbiesForm
+from .models import Headers, ProfessionalExperience,Education,Languages,Skills,Hobbies
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def HomepageCall(request):
@@ -56,6 +57,7 @@ def RegisterUser(request):
             print('There is a problem registering user. Please try again')
     return render(request,'Homepage/login.html',{'page':page, 'form':form})
 
+@login_required(login_url='login')
 def HeaderPage(request):
     current_user = request.user
     # print('current email')
@@ -71,7 +73,63 @@ def HeaderPage(request):
         form = HeaderForm(request.POST, instance=header_item)
         if form.is_valid():
             form.save()
-            return redirect('homepage')
+            return redirect('experience')
     return render(request,'Homepage/headerPage.html',{'form':form})
 
 
+@login_required(login_url='login')
+def ProfessionalExperiencePage(request):
+    current_user = request.user
+    current_user_name = current_user.username
+    user_experience = ProfessionalExperience.objects.get(user=current_user_name)
+    form = ProfessionalExperienceForm(instance=user_experience)
+    if request.method == 'POST':
+        form = ProfessionalExperienceForm(request.POST,instance=user_experience)
+        if form.is_valid():
+            form.save()
+            return redirect('education')
+
+    return render(request,'Homepage/professional_experience.html',{'form':form})
+
+def EducationPage(request):
+    current_user = request.user
+    current_user_name = current_user.username
+    user_education = Education.objects.get(user=current_user_name)
+    form = EducationForm(instance=user_education)
+    if request.method == 'POST':
+        form = EducationForm(request.POST,instance=user_education)
+        if form.is_valid():
+            form.save()
+            return redirect('other')
+
+    return render(request,'Homepage/education.html',{'form':form})
+
+
+def OtherDetailsPage(request):
+    current_user = request.user
+    current_user_name = current_user.username
+
+    language_instance = Languages.objects.get(user = current_user_name)
+    skills_instance = Skills.objects.get(user=current_user_name)
+    hobbies_instance = Hobbies.objects.get(user=current_user_name)
+
+    language_form = LanguagesForm(instance=language_instance)
+    skills_form = SkillsForm(instance=skills_instance)
+    hobbies_form = HobbiesForm(instance=hobbies_instance)
+
+    if request.method == 'POST':
+
+        language_form = LanguagesForm(request.POST,instance=language_instance)
+        skills_form = SkillsForm(request.POST,instance=skills_instance)
+        hobbies_form = HobbiesForm(request.POST,instance=hobbies_instance)
+
+        if language_form.is_valid() and skills_form.is_valid() and hobbies_form.is_valid():
+            language_form.save()
+            skills_form.save()
+            hobbies_form.save()
+
+            return redirect('homepage')
+        
+
+
+    return render(request,'Homepage/other_details.html',{'language_form':language_form,'skills_form':skills_form,'hobbies_form':hobbies_form})
