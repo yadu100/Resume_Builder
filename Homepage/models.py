@@ -20,14 +20,13 @@ class ProfessionalExperience(models.Model):
     user = models.CharField(max_length=150)
 
 
-    #remove null and blank for no 1 fields later
 
 
-    company1 = models.CharField(null=True,blank=True,max_length=500)
-    location1 = models.CharField(null=True,blank=True,max_length=500)
-    start_date1 = models.DateField(null=True,blank=True)
-    end_date1 = models.DateField(null=True,blank=True)
-    job_description1 = models.TextField(null=True,blank=True,max_length=1000)
+    company1 = models.CharField(null=True,max_length=500)
+    location1 = models.CharField(null=True,max_length=500)
+    start_date1 = models.DateField(null=True)
+    end_date1 = models.DateField(null=True)
+    job_description1 = models.TextField(null=True,max_length=1000)
 
     company2 = models.CharField(null=True,blank=True,max_length=500)
     location2 = models.CharField(null=True,blank=True,max_length=500)
@@ -58,14 +57,13 @@ class Education(models.Model):
     user = models.CharField(max_length=150)
 
 
-    #remove null and blank for no 1 fields
 
 
-    degree1 = models.CharField(max_length=700,null=True,blank=True)
-    school1 = models.CharField(max_length=700,null=True,blank=True)
-    cgpa1 = models.FloatField(null=True,blank=True)
-    start_date1 = models.DateField(null=True,blank=True)
-    end_date1 = models.DateField(null=True,blank=True)
+    degree1 = models.CharField(max_length=700,null=True)
+    school1 = models.CharField(max_length=700,null=True)
+    cgpa1 = models.FloatField(null=True)
+    start_date1 = models.DateField(null=True)
+    end_date1 = models.DateField(null=True)
 
     degree2 = models.CharField(max_length=700,null=True,blank=True)
     school2 = models.CharField(max_length=700,null=True,blank=True)
