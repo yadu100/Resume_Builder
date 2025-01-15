@@ -91,6 +91,8 @@ def ProfessionalExperiencePage(request):
 
     return render(request,'Homepage/professional_experience.html',{'form':form})
 
+
+@login_required(login_url='login')
 def EducationPage(request):
     current_user = request.user
     current_user_name = current_user.username
@@ -105,6 +107,7 @@ def EducationPage(request):
     return render(request,'Homepage/education.html',{'form':form})
 
 
+@login_required(login_url='login')
 def OtherDetailsPage(request):
     current_user = request.user
     current_user_name = current_user.username
