@@ -131,7 +131,7 @@ def OtherDetailsPage(request):
             skills_form.save()
             hobbies_form.save()
 
-            return redirect('homepage')
+            return redirect('template')
         
 
 

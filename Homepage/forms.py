@@ -36,7 +36,7 @@ class CustomUserCreationFrom(UserCreationForm):
 class HeaderForm(ModelForm):
     class Meta:
         model = Headers
-        fields = ['full_name','applying_role','email','phone','location']
+        fields = ['full_name','applying_role','email','phone','location','basic_intro']
 
         widgets = {
             'full_name': forms.TextInput(attrs={'class':'form-control'}),
@@ -44,6 +44,8 @@ class HeaderForm(ModelForm):
             'email': forms.EmailInput(attrs={'class':'form-control'}),
             'phone': forms.TextInput(attrs={'class':'form-control'}),
             'location': forms.TextInput(attrs={'class':'form-control'}),
+            'basic_intro':  forms.Textarea(attrs={'class':'form-control','rows':10}),
+            
 
             
 
@@ -57,57 +59,63 @@ class HeaderForm(ModelForm):
 class ProfessionalExperienceForm(ModelForm):
     class Meta:
         model = ProfessionalExperience
-        fields = ['company1','location1','start_date1','end_date1','job_description1','company2','location2','start_date2','end_date2','job_description2','company3','location3','start_date3','end_date3','job_description3','company4','location4','start_date4','end_date4','job_description4',]
+        fields = ['company1','location1','start_date1','designation1','job_description1','company2','location2','start_date2','end_date2','designation2','job_description2','company3','location3','start_date3','end_date3','designation3','job_description3','company4','location4','start_date4','end_date4','designation4','job_description4',]
 
         widgets = {
             'company1': forms.TextInput(attrs={'class':'form-control'}),
             'location1': forms.TextInput(attrs={'class':'form-control'}),
             'start_date1': forms.DateInput(attrs={'class':'form-control'}),
-            'end_date1': forms.DateInput(attrs={'class':'form-control'}),
+            'designation1':forms.TextInput(attrs={'class':'form-control'}),
             'job_description1': forms.Textarea(attrs={'class':'form-control','rows':10}),
 
             'company2': forms.TextInput(attrs={'class':'form-control'}),
             'location2': forms.TextInput(attrs={'class':'form-control'}),
             'start_date2': forms.DateInput(attrs={'class':'form-control'}),
             'end_date2': forms.DateInput(attrs={'class':'form-control'}),
+            'designation2':forms.TextInput(attrs={'class':'form-control'}),
             'job_description2': forms.Textarea(attrs={'class':'form-control','rows':10}),
 
             'company3': forms.TextInput(attrs={'class':'form-control'}),
             'location3': forms.TextInput(attrs={'class':'form-control'}),
             'start_date3': forms.DateInput(attrs={'class':'form-control'}),
             'end_date3': forms.DateInput(attrs={'class':'form-control'}),
+            'designation3':forms.TextInput(attrs={'class':'form-control'}),
             'job_description3': forms.Textarea(attrs={'class':'form-control','rows':10}),
 
             'company4': forms.TextInput(attrs={'class':'form-control'}),
             'location4': forms.TextInput(attrs={'class':'form-control'}),
             'start_date4': forms.DateInput(attrs={'class':'form-control'}),
             'end_date4': forms.DateInput(attrs={'class':'form-control'}),
+            'designation4':forms.TextInput(attrs={'class':'form-control'}),
             'job_description4': forms.Textarea(attrs={'class':'form-control','rows':10}),
         }
 
 class EducationForm(ModelForm):
     class Meta:
         model = Education
-        fields = ['degree1','school1','cgpa1','start_date1','end_date1','degree2','school2','cgpa2','start_date2','end_date2','degree3','school3','cgpa3','start_date3','end_date3']
+        fields = ['degree1','school1','locationed1','cgpa1','started_date1','ended_date1','degree2','school2','locationed2','cgpa2','started_date2','ended_date2','degree3','school3','locationed3','cgpa3','started_date3','ended_date3']
 
         widgets = {
             'degree1':forms.TextInput(attrs={'class':'form-control'}),
             'school1':forms.TextInput(attrs={'class':'form-control'}),
+            'locationed1':forms.TextInput(attrs={'class':'form-control'}),
             'cgpa1': forms.NumberInput(attrs={'class':'form-control','step':'0.01','min':'0','max':'10'}),
-            'start_date1': forms.DateInput(attrs={'class':'form-control'}),
-            'end_date1': forms.DateInput(attrs={'class':'form-control'}),
+            'started_date1': forms.DateInput(attrs={'class':'form-control'}),
+            'ended_date1': forms.DateInput(attrs={'class':'form-control'}),
 
             'degree2':forms.TextInput(attrs={'class':'form-control'}),
             'school2':forms.TextInput(attrs={'class':'form-control'}),
+            'locationed2':forms.TextInput(attrs={'class':'form-control'}),
             'cgpa2': forms.NumberInput(attrs={'class':'form-control','step':'0.01','min':'0','max':'10'}),
-            'start_date2': forms.DateInput(attrs={'class':'form-control'}),
-            'end_date2': forms.DateInput(attrs={'class':'form-control'}),
+            'started_date2': forms.DateInput(attrs={'class':'form-control'}),
+            'ended_date2': forms.DateInput(attrs={'class':'form-control'}),
 
             'degree3':forms.TextInput(attrs={'class':'form-control'}),
             'school3':forms.TextInput(attrs={'class':'form-control'}),
+            'locationed3':forms.TextInput(attrs={'class':'form-control'}),
             'cgpa3': forms.NumberInput(attrs={'class':'form-control','step':'0.01','min':'0','max':'10'}),
-            'start_date3': forms.DateInput(attrs={'class':'form-control'}),
-            'end_date3': forms.DateInput(attrs={'class':'form-control'}),
+            'started_date3': forms.DateInput(attrs={'class':'form-control'}),
+            'ended_date3': forms.DateInput(attrs={'class':'form-control'}),
         }
 
 class LanguagesForm(ModelForm):
