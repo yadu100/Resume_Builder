@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'Homepage.apps.HomepageConfig',
+    'Template_Insertor.apps.TemplateInsertorConfig',
 
     "crispy_forms",
     "crispy_bootstrap4",

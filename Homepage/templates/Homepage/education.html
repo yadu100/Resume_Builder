@@ -16,7 +16,7 @@
 <body>
 
 
-    <h1 class="display-2">Previous Experience</h1>
+    <h1 class="display-2">Education</h1>
     <form action="" method="post">
         {% csrf_token %}
         <div class="container text-monospace">
@@ -32,16 +32,20 @@
                 {{form.school1}}
             </div>
             <div class="form-group">
+                {{form.locationed1.label_tag}}
+                {{form.locationed1}}
+            </div>
+            <div class="form-group">
                 {{form.cgpa1.label_tag}}
                 {{form.cgpa1}}
             </div>
             <div class="form-group">
-                {{form.start_date1.label_tag}}
-                {{form.start_date1}}
+                {{form.started_date1.label_tag}}
+                {{form.started_date1}}
             </div>
             <div class="form-group">
-                {{form.end_date1.label_tag}}
-                {{form.end_date1}}
+                {{form.ended_date1.label_tag}}
+                {{form.ended_date1}}
             </div>
 
             <div id="education-sections">
@@ -58,16 +62,20 @@
                         {{form.school2}}
                     </div>
                     <div class="form-group">
+                        {{form.locationed2.label_tag}}
+                        {{form.locationed2}}
+                    </div>
+                    <div class="form-group">
                         {{form.cgpa2.label_tag}}
                         {{form.cgpa2}}
                     </div>
                     <div class="form-group">
-                        {{form.start_date2.label_tag}}
-                        {{form.start_date2}}
+                        {{form.started_date2.label_tag}}
+                        {{form.started_date2}}
                     </div>
                     <div class="form-group">
-                        {{form.end_date2.label_tag}}
-                        {{form.end_date2}}
+                        {{form.ended_date2.label_tag}}
+                        {{form.ended_date2}}
                     </div>
                 </div>
 
@@ -85,16 +93,20 @@
                         {{form.school3}}
                     </div>
                     <div class="form-group">
+                        {{form.locationed3.label_tag}}
+                        {{form.locationed3}}
+                    </div>
+                    <div class="form-group">
                         {{form.cgpa3.label_tag}}
                         {{form.cgpa3}}
                     </div>
                     <div class="form-group">
-                        {{form.start_date3.label_tag}}
-                        {{form.start_date3}}
+                        {{form.started_date3.label_tag}}
+                        {{form.started_date3}}
                     </div>
                     <div class="form-group">
-                        {{form.end_date3.label_tag}}
-                        {{form.end_date3}}
+                        {{form.ended_date3.label_tag}}
+                        {{form.ended_date3}}
                     </div>
 
                 </div>
